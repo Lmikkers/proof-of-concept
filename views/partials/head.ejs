@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funda</title>
+
+    <!-- Link to Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="/style.css">
+
+    <script src="/scripts/client.js" defer></script>
+
+    <!-- <link rel="stylesheet" href="assets/style.css"> -->
+
+    <!-- GOOGLE FONTS -->
+
+    <!-- EINDE GOOGLE FONTS -->
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <p>Buy</p>
+                </li>
+                <li>
+                    <p>Rent</p>
+                </li>
+                <li>
+                    <p>Sell</p>
+                </li>
+                <li>
+                    <a class="favoritesLink" href="/favorites" <% if (current=='/favorites' ) { %> class="active"<% } %>
+                            >Favorites</a>
+                </li>
+                <li>
+                    <p><i class='bx bx-home-alt-2'></i>My Home</p>
+                </li>
+                <li>
+                    <p>Log in</p>
+                </li>
+            </ul>
+            <div class="dropdown">
+                <button onclick="myFunction()" class="dropbtn">Menu<i class='bx bx-menu'></i></button>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="#">Buy</a>
+                    <a href="#">Rent</a>
+                    <a href="#">Sell</a>
+                    <a class="favoritesLink" href="/favorites" <% if (current=='/favorites' ) { %> class="active"<% } %>
+                            >Favorites</a>
+                    <a href="#">My Home</a>
+                    <a href="#">Log in</a>
+                </div>
+            </div>
+
+        </nav>
+    </header>
+    <main>

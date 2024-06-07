@@ -1,0 +1,50 @@
+<%- include('./partials/head', {current: '/' }); %>
+
+    <main>
+        <section>
+            <% houses.forEach(function(houses) { %>
+                <picture>
+                    <source class="homeImg"
+                        srcset="https://fdnd-agency.directus.app/assets/<%= houses.poster_image %>?format=avif"
+                        type="image/avif">
+                    <source class="homeImg"
+                        srcset="https://fdnd-agency.directus.app/assets/<%= houses.poster_image %>?format=webp"
+                        type="image/webp">
+                    <img class="homeImg" src="https://fdnd-agency.directus.app/assets/<%= houses.poster_image %>"
+                        alt="<%= houses.poster_image %> Image">
+                </picture>
+                <p>
+                    <%= houses.street %>
+                        <%= houses.house_nr %>
+                            <%= houses.nr_addition %>
+                </p>
+                <button class="likeButton">♥️</button>
+
+                <p>
+                    <%= houses.postal_code %>
+                        <%= houses.city %>
+                </p>
+                <p>
+                    <%= houses.price %>
+                </p>
+
+                <div class="card">
+                    <span onclick="gfg(1)" class="star">★
+                    </span>
+                    <span onclick="gfg(2)" class="star">★
+                    </span>
+                    <span onclick="gfg(3)" class="star">★
+                    </span>
+                    <span onclick="gfg(4)" class="star">★
+                    </span>
+                    <span onclick="gfg(5)" class="star">★
+                    </span>
+                    <h3 id="output">
+                        Rating is: 0/5
+                    </h3>
+                </div>
+                <% }) %>
+        </section>
+    </main>
+
+    <%- include('./partials/foot') %>

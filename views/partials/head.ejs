@@ -13,8 +13,6 @@
 
     <script src="/scripts/client.js" defer></script>
 
-    <!-- <link rel="stylesheet" href="assets/style.css"> -->
-
     <!-- GOOGLE FONTS -->
 
     <!-- EINDE GOOGLE FONTS -->
@@ -24,7 +22,11 @@
 
     <header>
         <nav>
-            <ul>
+            <ul class="navigation">
+                <li>
+                    <a class="homeLink" href="/" <% if (current=='/' ) { %> class="active"<% } %>
+                            ><i class='bx bx-home-alt-2'></i>Home</a>
+                </li>
                 <li>
                     <p>Buy</p>
                 </li>
@@ -39,22 +41,19 @@
                             >Favorites</a>
                 </li>
                 <li>
-                    <p><i class='bx bx-home-alt-2'></i>My Home</p>
-                </li>
-                <li>
                     <p>Log in</p>
                 </li>
             </ul>
             <div class="dropdown">
-                <button onclick="myFunction()" class="dropbtn">Menu<i class='bx bx-menu'></i></button>
-                <div id="myDropdown" class="dropdown-content">
+                <button onclick="myFunction()" class="dropBtn">Menu<i class='bx bx-menu'></i></button>
+                <div id="myDropdown" class="dropdownContent">
+                    <a href="#">Home</a>
+                    <a href="#">Log in</a>
                     <a href="#">Buy</a>
                     <a href="#">Rent</a>
                     <a href="#">Sell</a>
                     <a class="favoritesLink" href="/favorites" <% if (current=='/favorites' ) { %> class="active"<% } %>
                             >Favorites</a>
-                    <a href="#">My Home</a>
-                    <a href="#">Log in</a>
                 </div>
             </div>
 

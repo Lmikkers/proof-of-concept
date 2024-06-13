@@ -1,5 +1,3 @@
-console.log('Hier komt je server voor Sprint 12.')
-
 // Importeer het npm pakket express uit de node_modules map
 import express from 'express'
 
@@ -42,8 +40,38 @@ app.get('/', function (request, response) {
 
 app.get('/favorites', function (request, response) {
 
-    fetchJson(apiUrl).then((housesDataUitDeAPI) => {
-        response.render('favorites', { houses: housesDataUitDeAPI.data })
+    fetchJson(`${apiList}?filter={"title": {"_eq": "Mijn lijst (Ellenoor)"}}`).then((favorietenDataUitDeAPI) => {
+        response.render('favorites', { favorieten: favorietenDataUitDeAPI.data })
+    });
+})
+
+app.post('/', function (request, response) {
+    fetchJson(`${apiList}?filter={"id":{"_eq":13}}`).then((favorietenDataUitDeAPI) => {
+        const houses = favorietenDataUitDeAPI.data[0].houses;
+        const newHouses = houses.push(Number(request.body.house_id))
+        fetch(`${apiList}/13`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json', // Set appropriate header
+            },
+            body: JSON.stringify({
+                houses: houses
+            }),
+        }).then(tweederesponse => {
+            // Handle the response from the server
+            console.log('POST request response:', tweederesponse);
+        }).catch(error => {
+            console.error('Error making POST request:', error);
+        });
+    })
+})
+
+
+app.get('/list', function (request, response) {
+
+    fetchJson(`${apiList}?filter={"title": {"_eq": "Mijn lijst (Ellenoor)"}}&fields=*,houses.f_houses_id.*`).then((listDataUitDeAPI) => {
+        console.log(listDataUitDeAPI.data)
+        response.render('list', { lijst: listDataUitDeAPI.data[0] })
     });
 
 })
@@ -58,3 +86,6 @@ app.listen(app.get('port'), function () {
     // Toon een bericht in de console en geef het poortnummer door
     console.log(`Application started on http://localhost:${app.get('port')}`)
 })
+
+
+

@@ -60,6 +60,7 @@ app.post('/', function (request, response) {
         }).then(tweederesponse => {
             // Handle the response from the server
             console.log('POST request response:', tweederesponse);
+            response.redirect(303, '/')
         }).catch(error => {
             console.error('Error making POST request:', error);
         });

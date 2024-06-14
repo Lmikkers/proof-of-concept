@@ -57,17 +57,17 @@ nav ul li {
 }
 
 .homeCard {
-    margin: 1em 2em;
-    padding: 1em;
-    border: solid var(--primary-orange);
-    border-radius: 20px;
-    border-width: .3em;
+    margin: 1em 1em;
+    padding: .5em;
 }
 
 .homeImg {
+    display: table-row;
     width: 40vw;
     min-width: 400px;
     height: auto;
+    border: solid var(--primary-orange);
+    border-width: .2em;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 0;
@@ -77,7 +77,7 @@ nav ul li {
 .infoCard {
     padding: 1em;
     border: solid var(--primary-orange);
-    border-width: .15em;
+    border-width: .3em;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     border-bottom-right-radius: 20px;

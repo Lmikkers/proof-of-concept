@@ -48,7 +48,7 @@ app.get('/favorites', function (request, response) {
 app.post('/', function (request, response) {
     fetchJson(`${apiList}?filter={"id":{"_eq":13}}`).then((favorietenDataUitDeAPI) => {
         const houses = favorietenDataUitDeAPI.data[0].houses;
-        const newHouses = houses.push(Number(request.body.house_id))
+        const addNewFavoriteHouse = houses.push(Number(request.body.house_id))
         fetch(`${apiList}/13`, {
             method: 'PATCH',
             headers: {

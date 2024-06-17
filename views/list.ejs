@@ -1,64 +1,43 @@
 <%- include('./partials/head', {current: '/list' }); %>
 
-    <p>
-        <%= lijst.title %>
-    </p>
+<p>
+    <%= lijst.title %>
+</p>
 
-    <section class="allHouses">
-        <% lijst.houses.forEach(function(house) { %>
-            <div class="homeCard">
-                <div>
-                    <picture>
-                        <source class="homeImg"
-                            srcset="https://fdnd-agency.directus.app/assets/<%= house.f_houses_id.poster_image %>?format=avif"
-                            type="image/avif">
-                        <source class="homeImg"
-                            srcset="https://fdnd-agency.directus.app/assets/<%= house.f_houses_id.poster_image %>?format=webp"
-                            type="image/webp">
-                        <img class="homeImg"
-                            src="https://fdnd-agency.directus.app/assets/<%= house.f_houses_id.poster_image %>"
-                            alt="<%= house.f_houses_id.poster_image %> Image">
+<section class="allHouses">
+    <% lijst.houses.forEach(function(house) { %>
+        <div class="homeCard">
+            <div>
+                <picture>
+                    <source class="homeImg" srcset="https://fdnd-agency.directus.app/assets/<%= house.f_houses_id.poster_image %>?format=avif" type="image/avif">
+                    <source class="homeImg" srcset="https://fdnd-agency.directus.app/assets/<%= house.f_houses_id.poster_image %>?format=webp" type="image/webp">
+                        <img class="homeImg" src="https://fdnd-agency.directus.app/assets/<%= house.f_houses_id.poster_image %>" alt="<%= house.f_houses_id.poster_image %> Image">
                     </picture>
-                </div>
-                <div class="infoCard">
-                    <p>
-                        <%= house.f_houses_id.street %>
-                            <%= house.f_houses_id.house_nr %>
-                                <%= house.f_houses_id.nr_addition %>
-                    </p>
-
-                    <form method="post" action="/">
-                        <input type="hidden" value="<%= house.id %>" name="house_id">
-                        <button class="likeButton" type="submit" name="actie">♥️</button>
-                    </form>
-
-                    <p>
-                        <%= house.f_houses_id.postal_code %>
-                            <%= house.f_houses_id.city %>
-                    </p>
-                    <p>
-                        <%= house.f_houses_id.price %>
-                    </p>
-
-                    <div class="card">
-                        <span onclick="gfg(1)" class="star">★
-                        </span>
-                        <span onclick="gfg(2)" class="star">★
-                        </span>
-                        <span onclick="gfg(3)" class="star">★
-                        </span>
-                        <span onclick="gfg(4)" class="star">★
-                        </span>
-                        <span onclick="gfg(5)" class="star">★
-                        </span>
-                        <h3 id="output">
-                            Rating is: 0/5
-                        </h3>
-                    </div>
-                </div>
             </div>
 
-            <% }) %>
-    </section>
+            <div class="infoCard">
+                <p><%= house.f_houses_id.street %> <%= house.f_houses_id.house_nr %> <%= house.f_houses_id.nr_addition %></p>
+                
+                <form method="post" action="/">
+                    <input type="hidden" value="<%= house.id %>" name="house_id">
+                    <button class="likeButton" type="submit" name="actie">♥️</button>
+                </form>
 
-    <%- include('./partials/foot') %>
+                <p><%= house.f_houses_id.postal_code %> <%= house.f_houses_id.city %></p>
+                <p><%= house.f_houses_id.price %></p>
+
+                <div class="card">
+                    <span onclick="gfg(1)" class="star">★</span>
+                    <span onclick="gfg(2)" class="star">★</span>
+                    <span onclick="gfg(3)" class="star">★</span>
+                    <span onclick="gfg(4)" class="star">★</span>
+                    <span onclick="gfg(5)" class="star">★</span>
+                    <h3 id="output">Rating is: 0/5</h3>
+                </div>
+            </div>
+        </div>
+
+    <% }) %>
+</section>
+
+<%- include('./partials/foot') %>

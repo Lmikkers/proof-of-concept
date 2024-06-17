@@ -4,8 +4,6 @@ import express from 'express'
 // Importeer de zelfgemaakte functie fetchJson uit de ./helpers map
 import fetchJson from './helpers/fetch-json.js'
 
-
-
 // Maak een nieuwe express app aan
 const app = express()
 const apiUrl = "https://fdnd-agency.directus.app/items/";
@@ -27,7 +25,6 @@ app.use(express.static('public'))
 // Zorg dat werken met request data makkelijker wordt
 app.use(express.urlencoded({ extended: true }))
 
-
 // Homepage 
 app.get('/', function (request, response) {
     fetchJson(apiHouse).then((housesDataUitDeAPI) => {
@@ -37,9 +34,7 @@ app.get('/', function (request, response) {
     });
 })
 
-
 app.get('/favorites', function (request, response) {
-
     fetchJson(`${apiList}?filter={"title": {"_eq": "Mijn lijst (Ellenoor)"}}`).then((favorietenDataUitDeAPI) => {
         response.render('favorites', { favorieten: favorietenDataUitDeAPI.data })
     });
@@ -67,17 +62,12 @@ app.post('/', function (request, response) {
     })
 })
 
-
 app.get('/list', function (request, response) {
-
     fetchJson(`${apiList}?filter={"title": {"_eq": "Mijn lijst (Ellenoor)"}}&fields=*,houses.f_houses_id.*`).then((listDataUitDeAPI) => {
         console.log(listDataUitDeAPI.data)
         response.render('list', { lijst: listDataUitDeAPI.data[0] })
     });
-
 })
-
-
 
 // Stel het poortnummer in waar express op moet gaan luisteren
 app.set('port', process.env.PORT || 8000)

@@ -36,8 +36,27 @@
                             <p><%- scan.description %></p>
                         </div>
                 
-                        <div>
-                            <h3><%= scan.score %><span>%</span></h3>
+                        <div class="resultChart">
+                            <!-- Example from medium.com -->
+                            <div class="singleChart">
+                                <svg viewBox="0 0 36 36" class="circularChart percentage<%= scan.score%>">
+                                  <path class="circleBg"
+                                    d="M18 2.0845
+                                      a 15.9155 15.9155 0 0 1 0 31.831
+                                      a 15.9155 15.9155 0 0 1 0 -31.831"
+                                  />
+                                  <path class="circle"
+                                    stroke-dasharray="<%= scan.score %>, 100"
+                                    d="M18 2.0845
+                                      a 15.9155 15.9155 0 0 1 0 31.831
+                                      a 15.9155 15.9155 0 0 1 0 -31.831"
+                                  />
+                                  <text x="18" y="20.35" class="percentage"></text>
+                                </svg>
+                                <h3><%= scan.score %><span>%</span></h3>
+                            </div>
+                            <!-- End example -->
+                            <!-- <h3><%=// scan.score %><span>%</span></h3> -->
                         </div>
                     </article>
                 

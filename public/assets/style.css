@@ -17,6 +17,9 @@ body {
     
     --whiteColor: #FFFFFF;
     --detailGreyColor: #87929F;
+
+    --orangeColor: #FF9800;
+    --detailOrangeColor: #FFE0B3;
     
     /* FONTS */
     --fontText: "Outfit", sans-serif;
@@ -152,6 +155,7 @@ section.topBar h2 {
 }
 .autoScanResult p {
     margin-bottom: var(--spaceUnit);
+    white-space: pre-wrap;
 }
 .autoScanResult div:last-child {
     display: flex;
@@ -161,6 +165,7 @@ section.topBar h2 {
 .autoScanResult h3 {
     font-size: var(--resultFont); /* 40px */
     font-weight: 600;
+    position: absolute; /* zodat tekst in het midden komt van de chart */
 }
 .autoScanResult h3 span {
     font-weight: 300;
@@ -248,5 +253,37 @@ ul.sites li a:hover h3 {
     }
     .jsOffText {
         display: none;
+    }
+}
+
+
+
+  
+.singleChart {
+    position: relative;
+    width: 80%;
+}
+.circularChart {
+    display: block;
+    max-width: 60%;
+    stroke: var(--orangeColor);
+}
+.circleBg {
+    fill: none;
+    stroke: var(--detailOrangeColor);
+    stroke-width: 4;
+}
+.circle {
+    fill: none;
+    stroke-width: 4;
+    stroke-linecap: round;
+    animation: progress 1s ease-out forwards;
+}
+.percentage100 {
+    stroke: var(--mainColor);
+}
+@keyframes progress {
+    0% {
+        stroke-dasharray: 0 100;
     }
 }

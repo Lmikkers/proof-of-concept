@@ -21,6 +21,8 @@ Voor Future Ready Design heb ik als opdracht gekregen een detail pagina te maken
 
 
 ### Tablet
+<img width="512" alt="image" src="https://github.com/Lmikkers/proof-of-concept/assets/94455811/18d7f0e0-5d91-43fe-8527-13c7c9a6c809">
+
 
 ### kleiner als 900px 
 <img width="897" alt="image" src="https://github.com/Lmikkers/proof-of-concept/assets/94455811/d0667ab6-82d1-45f3-aadf-28db48a6372f">

@@ -1,6 +1,12 @@
 <%- include('./partials/head', {current: '/'}); %>
 
-<header>
+<section class="smallScreen">
+    <img src="../assets/icons/smallScreen.svg" alt="je scherm is te klein icoon van scherm breedte">
+    <h2>Je scherm is te klein</h2>
+    <p>AccessDash vereist een minimale schermbreedte van 900px</p>
+</section>
+
+<header class="content">
     <section class="topBar">
         <div>
             <p>Automatische scan</p>
@@ -20,7 +26,7 @@
     </section>
 </header>
 
-<main>
+<main class="content">
     <section class="allScans">
         <!-- Als er scans zijn laat dit zien -->
         <% if (scans.length > 0) { %>
@@ -38,6 +44,7 @@
                 
                         <div class="resultChart">
                             <!-- Example from medium.com -->
+                            <!-- https://medium.com/@pppped/how-to-code-a-responsive-circular-percentage-chart-with-svg-and-css-3632f8cd7705 -->
                             <div class="singleChart">
                                 <svg viewBox="0 0 36 36" class="circularChart percentage<%= scan.score%>">
                                   <path class="circleBg"
@@ -56,7 +63,6 @@
                                 <h3><%= scan.score %><span>%</span></h3>
                             </div>
                             <!-- End example -->
-                            <!-- <h3><%=// scan.score %><span>%</span></h3> -->
                         </div>
                     </article>
                 
@@ -108,6 +114,18 @@
                 <article class="graphs">
                     <h2>Toegankelijkheid</h2>
                     <!-- Hier komt een grafiek -->
+                    <table id="accessibilityTable">
+                        <tr>
+                            <% scans.forEach(item => { %>
+                                <th><%= item.date %></th>
+                            <% }); %>
+                        </tr>
+                        <tr>
+                            <% scans.forEach(item => { %>
+                                <td><%= item.score %></td>
+                            <% }); %>
+                        </tr>
+                    </table>
                 </article>
             </section>
         </div>

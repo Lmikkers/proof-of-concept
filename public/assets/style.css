@@ -57,6 +57,7 @@ p {
     font-size: var(--spaceUnit);
 }
 
+
 /* ----- DETAIL PAGINA ------------------------------------------------------------------------------------------------------------------- */
 /* top header url en datum links en rechts */
 section.topBar {
@@ -73,7 +74,6 @@ section.topBar h2 {
     font-weight: 600;
 }
 /* datum met 2 buttons links en recht */
-/* ❕kijken of dit PE verantwoord is */
 .dateSection {
     display: none;
     flex-direction: row;
@@ -170,8 +170,36 @@ section.topBar h2 {
 .autoScanResult h3 span {
     font-weight: 300;
 }
+/* autoscan chart */
+.singleChart {
+    position: relative;
+    width: 80%;
+}
+.circularChart {
+    display: block;
+    max-width: 60%;
+    stroke: var(--orangeColor);
+}
+.circleBg {
+    fill: none;
+    stroke: var(--detailOrangeColor);
+    stroke-width: 4;
+}
+.circle {
+    fill: none;
+    stroke-width: 4;
+    stroke-linecap: round;
+    animation: progress 1s ease-out forwards;
+}
+.percentage100 {
+    stroke: var(--mainColor);
+}
+@keyframes progress {
+    0% {
+        stroke-dasharray: 0 100;
+    }
+}
 /* rechter blok 1fr */
-/* .scanResults section:nth-child(2) */
 .results {
     display: flex;
     flex-direction: column;
@@ -204,8 +232,24 @@ section.topBar h2 {
     box-shadow: var(--dropShadow);
     height: -webkit-fill-available;
 }
+/* Small screen */
+.smallScreen {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--lightGreyColor);
+    width: 100%;
+    height: calc(100vh - var(--spaceLg));
+}
+.smallScreen img {
+    margin-bottom: var(--spaceLg);
+}
 
 /* ----- EINDE DETAIL PAGINA ------------------------------------------------------------------------------------------------------------- */
+
+
+/* ----- HOME PAGINA---------------------------------------------------------------------------------------------------------------------- */
 .home h1 {
     color: var(--mainColor);
 }
@@ -217,6 +261,7 @@ main:has(ul.sites) {
 ul.sites {
     list-style-type: none;
     display: flex;
+    flex-direction: column;
     gap: var(--spaceUnit);
 }
 ul.sites li a {
@@ -241,9 +286,10 @@ ul.sites li a:hover h3 {
 .jsOffText {
     color: var(--mainColor);
 }
+/* ----- EINDE HOME PAGINA ------------------------------------------------------------------------------------------------------------- */
 
 
-/* ----- ALS JAVASCRIPT AANSTAAT LAAT DIT DAN ZIEN ------------------------------------------------------------------------------------ */
+/* ----- ALS JAVASCRIPT AANSTAAT LAAT DIT DAN ZIEN ------------------------------------------------------------------------------------- */
 @media (scripting: enabled) {
     .dateSection {
         display: flex;
@@ -254,36 +300,15 @@ ul.sites li a:hover h3 {
     .jsOffText {
         display: none;
     }
-}
+}  
 
 
-
-  
-.singleChart {
-    position: relative;
-    width: 80%;
-}
-.circularChart {
-    display: block;
-    max-width: 60%;
-    stroke: var(--orangeColor);
-}
-.circleBg {
-    fill: none;
-    stroke: var(--detailOrangeColor);
-    stroke-width: 4;
-}
-.circle {
-    fill: none;
-    stroke-width: 4;
-    stroke-linecap: round;
-    animation: progress 1s ease-out forwards;
-}
-.percentage100 {
-    stroke: var(--mainColor);
-}
-@keyframes progress {
-    0% {
-        stroke-dasharray: 0 100;
+/* -----RESPONSIVE ----------------------------------------------------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+    .smallScreen {
+      display: flex;
     }
-}
+    .content {
+      display: none;
+    }
+  }

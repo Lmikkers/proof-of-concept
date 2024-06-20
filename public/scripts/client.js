@@ -44,6 +44,9 @@ function slideLeft() {
         sliderFrame.scrollLeft -= slideWidth;
         updateCurrentDate(); // Update de datum
     }
+    else {
+        alert("Er zijn geen eerdere scans")
+    }
 }
 
 function slideRight() {
@@ -54,6 +57,9 @@ function slideRight() {
         currentScanIndex++;
         sliderFrame.scrollLeft += slideWidth;
         updateCurrentDate(); // Update de datum
+    }
+    else {
+        alert("Er zijn nog geen latere scans")
     }
 }
 

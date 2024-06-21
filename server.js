@@ -6,18 +6,14 @@ import express from 'express'
 // Importeer de zelfgemaakte functie fetchJson uit de ./helpers map
 import fetchJson from './helpers/fetch-json.js'
 
-
-
 // Maak een nieuwe express app aan
-const app = express()
-const baseUrl = 'https://fdnd-agency.directus.app/'
-const apiUrl = 'https://fdnd-agency.directus.app/items/frd_site'
+const app = express(),
+      baseUrl = 'https://fdnd-agency.directus.app/',
+      apiUrl = 'https://fdnd-agency.directus.app/items/frd_site';
 
 // Endpoints 
 
 // New 13-06
-// const fetchSites = await fetchJson('https://fdnd-agency.directus.app/items/frd_site')
-// const fetchAllScans = await fetchJson('https://fdnd-agency.directus.app/items/frd_scans')
 const nieuwekijkScans = await fetchJson('https://fdnd-agency.directus.app/items/frd_site?filter[scans][_eq]=11&fields=id,title,scans.*')
 
 const fetchAllScans = async () => {
@@ -40,13 +36,12 @@ app.use(express.static('public'))
 // Zorg dat werken met request data makkelijker wordt
 app.use(express.urlencoded({extended: true}))
 
-
 // 🗺️ ROUTES > AANMAKEN VOOR DE ACCESDASH
 // Home route
 app.get('/', async function (request, response) {
     try {
-        const sitesResponse = await fetchSites();
-        const sites = sitesResponse.data; // Haal de 'data' eigenschap eruit
+        const sitesResponse = await fetchSites(),
+              sites = sitesResponse.data; // Haal de 'data' eigenschap eruit
         console.log('Fetched sites:', sites); // Log de opgehaalde sites
 
         response.render('index', {
@@ -67,12 +62,13 @@ function formatDate(dateString) {
 // Detail route
 app.get('/site/:id', async function (request, response) {
     try {
-        const siteId = parseInt(request.params.id);
+        const siteId = parseInt(request.params.id),
+              allScansResponse = await fetchAllScans(),
+              allScans = allScansResponse.data,
+              sitesResponse = await fetchSites(),
+              sites = sitesResponse.data;
+
         console.log('Site id:', siteId);
-        const allScansResponse = await fetchAllScans();
-        const allScans = allScansResponse.data;
-        const sitesResponse = await fetchSites();
-        const sites = sitesResponse.data;
 
         // Vind de site met de gegeven id
         const site = sites.find(s => s.id === siteId);
@@ -95,10 +91,7 @@ app.get('/site/:id', async function (request, response) {
     }
 });
 
-
 // 🚧 POST > AANMAKEN ALS DIE ER MOET KOMEN
-
-
 
 // Stel het poortnummer in waar express op moet gaan luisteren
 app.set('port', process.env.PORT || 8000)

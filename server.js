@@ -57,6 +57,13 @@ app.get('/', async function (request, response) {
     }
 });
 
+// Define the formatDate function
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    return monthNames[date.getMonth()];
+}
+
 // Detail route
 app.get('/site/:id', async function (request, response) {
     try {
@@ -80,7 +87,8 @@ app.get('/site/:id', async function (request, response) {
 
         response.render('detail', {
             site: site,
-            scans: siteScans
+            scans: siteScans,
+            formatDate
         });
     } catch (error) {
         response.status(500).send('Er is een fout opgetreden');

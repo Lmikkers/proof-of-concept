@@ -17,7 +17,6 @@
             </div>
         </div>
        
-
         <div class="dateSection">
             <button class="buttonLeft" aria-label="Vorige scan"><img src="../assets/icons/chevronLeft.svg" alt="pijl naar links"></button>
             <button class="date" aria-label="Datum"></button>
@@ -34,45 +33,65 @@
 
         <div id="scan<%= scan.id %>" class="containerScan" data-date="<%- scan.date %>">
             <div class="scanResults">
-                <section>
-                    <article class="autoScanResult">
-                        <div>
-                            <h1><%- scan.title %></h1>
-                            <!-- TODO: Enter er tussen fixen -->
-                            <p><%- scan.description %></p>
+                <article class="autoScanResult">
+                    <div>
+                        <p class="jsOffText">Maand: <%= formatDate(scan.date) %></p>
+                        <h1><%- scan.title %></h1>
+                        <!-- TODO: Enter er tussen fixen -->
+                        <p><%- scan.description %></p>
+                    </div>
+            
+                    <div class="resultChart">
+                        <!-- Example from medium.com -->
+                        <!-- https://medium.com/@pppped/how-to-code-a-responsive-circular-percentage-chart-with-svg-and-css-3632f8cd7705 -->
+                        <div class="singleChart">
+                            <svg viewBox="0 0 36 36" class="circularChart percentage<%= scan.score%>">
+                                <path class="circleBg"
+                                d="M18 2.0845
+                                    a 15.9155 15.9155 0 0 1 0 31.831
+                                    a 15.9155 15.9155 0 0 1 0 -31.831"
+                                />
+                                <path class="circle"
+                                stroke-dasharray="<%= scan.score %>, 100"
+                                d="M18 2.0845
+                                    a 15.9155 15.9155 0 0 1 0 31.831
+                                    a 15.9155 15.9155 0 0 1 0 -31.831"
+                                />
+                                <text x="18" y="20.35" class="percentage"></text>
+                            </svg>
+                            <h3><%= scan.score %><span>%</span></h3>
                         </div>
+                        <!-- End example -->
+                    </div>
+                </article>
+
+
+                <article class="typesErrorChart">
+                    <h2>Soorten foutmeldingen</h2>
+                    <!-- Hier komt een diagram -->
+                    <% //scan.result.forEach(scanResult => { %>
+                      <div>
+                        <canvas id="typesErrorChart" width="400" height="200"></canvas>
+                      </div>
+                    <% //}) %>
+                   
+                    <table>
+                        <tr>
+                            <th>contrast:</th>
+                            <th>stutureel:</th>
+                            <th>alt-teksten:</th>
+                            <th>aria-labels:</th>
+                        </tr>
+                        <tr>
+                            <td><%= scan.result[1].amount %></td> <!-- Ik begin bij 1, want bij js beginnen ze bij 0 -->
+                            <td><%= scan.result[2].amount %></td>
+                            <td><%= scan.result[3].amount %></td>
+                            <td><%= scan.result[4].amount %></td>
+                        </tr>
+                    </table>
+                </article>
                 
-                        <div class="resultChart">
-                            <!-- Example from medium.com -->
-                            <!-- https://medium.com/@pppped/how-to-code-a-responsive-circular-percentage-chart-with-svg-and-css-3632f8cd7705 -->
-                            <div class="singleChart">
-                                <svg viewBox="0 0 36 36" class="circularChart percentage<%= scan.score%>">
-                                  <path class="circleBg"
-                                    d="M18 2.0845
-                                      a 15.9155 15.9155 0 0 1 0 31.831
-                                      a 15.9155 15.9155 0 0 1 0 -31.831"
-                                  />
-                                  <path class="circle"
-                                    stroke-dasharray="<%= scan.score %>, 100"
-                                    d="M18 2.0845
-                                      a 15.9155 15.9155 0 0 1 0 31.831
-                                      a 15.9155 15.9155 0 0 1 0 -31.831"
-                                  />
-                                  <text x="18" y="20.35" class="percentage"></text>
-                                </svg>
-                                <h3><%= scan.score %><span>%</span></h3>
-                            </div>
-                            <!-- End example -->
-                        </div>
-                    </article>
-                
-                    <article class="typesErrors">
-                        <h2>Soorten foutmeldingen</h2>
-                        <!-- Hier komt een diagram -->
-                    </article>
-                </section>
-                
-                <section class="results">
+                <section class="resultErrors">
                     <% scan.result.forEach(scanResult => { %>
                         
                         <article>
@@ -117,7 +136,7 @@
                     <table id="accessibilityTable">
                         <tr>
                             <% scans.forEach(item => { %>
-                                <th><%= item.date %></th>
+                                <th><%= formatDate(item.date) %></th>
                             <% }); %>
                         </tr>
                         <tr>

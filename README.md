@@ -17,6 +17,10 @@
 Voor Future Ready Design heb ik als opdracht gekregen een detail pagina te maken voor AccesDash. Hierdoor kunnen bedrijven op een eenvoudige manier zien wat hun website scoort op toegankelijkheid, elke maand krijgt hun website een automatische scan.
 
 ### Dekstop
+> Je komt eerst op de begin pagina, daar kun je een website kiezen om de perfomance ervan te zien.
+<img width="1440" alt="image" src="https://github.com/Lmikkers/proof-of-concept/assets/94455811/907da448-c892-429b-ab95-52eccd195711">
+
+> AccesDash
 <img width="1440" alt="image" src="https://github.com/Lmikkers/proof-of-concept/assets/94455811/d0394cf5-8a85-45bc-b81d-61561c1096c2">
 
 ### Tablet
